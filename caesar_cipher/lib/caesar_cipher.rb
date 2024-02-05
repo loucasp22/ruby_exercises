@@ -4,7 +4,7 @@ module CaesarCipher
   UPPER_HASH = Hash[(1..26).to_a.zip('A'..'Z')]
 
   def self.encrypt(message, shift)
-    encrypted = []
+    encrypted = ""
     message.each_char do |char|
       char_pos = LOWER_HASH.key(char) || UPPER_HASH.key(char)
       if char.match(/[a-z]/)
@@ -15,7 +15,7 @@ module CaesarCipher
         encrypted << char
       end
     end
-    return encrypted.join('')
+    return encrypted
   end
 
   def self.dencrypt(message, shift)
