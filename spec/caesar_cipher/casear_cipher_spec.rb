@@ -1,4 +1,4 @@
-require_relative '../../caesar_cipher/lib/caesar_cipher'
+require_relative '../../lib/caesar_cipher/caesar_cipher'
 
 describe CaesarCipher do
   subject { CaesarCipher }
@@ -14,8 +14,7 @@ describe CaesarCipher do
   describe "#decrypt" do
     it "decrypts the message using the given shift factor" do
       message = "Bmfy f xywnsl!"
-      shift = -5
-      expect(subject.encrypt(message, shift)).to eq("What a string!")
+      expect(subject.bruteforce_decrypt(message)).to eq("What a string!")
     end
   end
 end
