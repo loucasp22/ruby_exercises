@@ -23,14 +23,13 @@ module CaesarCipher
   end
 
   def self.bruteforce_decrypt(message)
-    decrypted_messages = []
 
-    (1..26).each do |shift|
-      decrypted_message = encrypt(message, -shift)
-      decrypted_messages << decrypted_message
-    end
-
-    decrypted_messages.max_by { |message| message.scan(/[ETAOIN SHRDLU]/i).size }
+    (1..26)
+      .map do |possible_shift|
+        encrypt(message, -possible_shift)
+      end
+      .max_by do |decrypted_message|
+        decrypted_message.scan(/[ETAOIN SHRDLU]/i).size
+      end
   end
-
 end
